@@ -1,0 +1,24 @@
+on:
+  pull_request:
+
+permissions:
+  contents: read # Needed to clone the repo
+
+jobs:
+  alpine-base:
+    uses: ./.github/workflows/.build.yaml
+    with:
+      image: alpine-base
+
+
+  melange:
+    uses: ./.github/workflows/.build.yaml
+    with:
+      image: melange
+      melange-config: configs/latest.melange.yaml
+
+  sdk:
+    uses: ./.github/workflows/.build.yaml
+    with:
+      image: sdk
+      melange-config: configs/latest.melange.yaml
