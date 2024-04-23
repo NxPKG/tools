@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+concurrency: release
+
+permissions:
+  contents: read  # Needed to clone the repo
+  id-token: write # Needed to sign images
+  packages: write # Needed to publish images to GHCR
+
+jobs:
+  melange:
+    uses: ./.github/workflows/.build.yaml
+    with:
+      image: melange
+      melange-config: configs/latest.melange.yaml
+      registry: ghcr.io/wolfi-dev/melange
+      
+  sdk:
+    uses: ./.github/workflows/.build.yaml
+    with:
+      image: sdk
+      melange-config: configs/latest.melange.yaml
+      registry: ghcr.io/wolfi-dev/sdk
