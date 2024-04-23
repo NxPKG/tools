@@ -1,0 +1,15 @@
+contents:
+  packages:
+    - ca-certificates-bundle
+    - wolfi-baselayout
+    - sdk
+    - grype
+    - apk-tools
+    - gcsfuse
+
+environment:
+  COLORTERM: truecolor
+  TERM: xterm-256color
+
+entrypoint:
+  command: /usr/bin/sdk
