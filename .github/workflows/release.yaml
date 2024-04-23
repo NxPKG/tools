@@ -19,11 +19,11 @@ jobs:
     with:
       image: melange
       melange-config: configs/latest.melange.yaml
-      registry: ghcr.io/wolfi-dev/melange
+      registry: ghcr.io/nxpkg/melange
       
   sdk:
     uses: ./.github/workflows/.build.yaml
     with:
       image: sdk
       melange-config: configs/latest.melange.yaml
-      registry: ghcr.io/wolfi-dev/sdk
+      registry: ghcr.io/nxpkg/sdk
